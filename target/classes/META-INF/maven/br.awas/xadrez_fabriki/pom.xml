@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.awas</groupId>
+	<artifactId>xadrez_fabriki</artifactId>
+	<version>1.0</version>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>br.awas</groupId>
+			<artifactId>xadrez</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/xadrez-engine-1.0.jar</systemPath>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>${exec-maven.version}</version>
+					<configuration>
+						<mainClass>JogoXadrez</mainClass>
+						<classpathScope>system</classpathScope>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<!-- propriedades default do Maven -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- versoes das dependencias -->
+		<junit.version>4.12</junit.version>
+
+		<!-- versoes dos plugins -->
+		<exec-maven.version>1.6.0</exec-maven.version>
+		<maven-compiler.version>3.8.0</maven-compiler.version>
+		<maven-jar.version>3.1.1</maven-jar.version>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>algoritmo</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>exec-maven-plugin</artifactId>
+							<configuration>
+								<arguments>
+									<argument>alg1=xadrez.alg.AlgoritmoAleatorio</argument>
+									<argument>alg1.depth=3</argument>
+									<argument>alg2=AlgoritmoDesafiante</argument>
+									<argument>alg2.depth=3</argument>
+									<argument>delay=0</argument>
+									<argument>analise=0.65</argument>
+									<argument>loop=350</argument>
+									<argument>timeout=5</argument>
+								</arguments>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<id>xequeMateEmUmLance</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>exec-maven-plugin</artifactId>
+							<configuration>
+								<arguments>
+									<argument>arquivo=src/test/resources/xequeMateEmUmLance1.txt</argument>
+								</arguments>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

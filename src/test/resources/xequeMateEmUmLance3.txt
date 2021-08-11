@@ -1,0 +1,16 @@
+opcao_pecas=BRANCA
+turno=BRANCA
+id_casa_peao_en_passant=null
+contador_movimentos_sem_captura=0
+roque_ala_rei_branco_possivel=false
+roque_ala_dama_branca_possivel=false
+roque_ala_rei_preto_possivel=false
+roque_ala_dama_preta_possivel=false
+ -  R  -  t  -  -  -  - 
+ -  -  P  -  -  -  -  - 
+ p  r  p  -  -  -  -  - 
+ p  p  p  -  -  -  -  - 
+ -  -  -  -  -  -  -  - 
+ -  -  -  -  -  -  -  - 
+ -  -  -  -  -  -  -  - 
+ -  -  -  -  -  -  -  - 
