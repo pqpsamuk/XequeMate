@@ -1,2 +1,1 @@
-# xadrez_fabriki
 # XequeMate
